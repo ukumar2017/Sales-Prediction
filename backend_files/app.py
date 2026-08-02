@@ -1,21 +1,24 @@
 
-from flask import Flask, request, jsonify
+from flask import Flask, Blueprint, request, jsonify
 import joblib
 import pandas as pd
 
 # Initialize Flask application
 app = Flask(__name__)
 
+# Create API blueprint with base path
+api = Blueprint("api", __name__, url_prefix="/superkart-backend/v1")
+
 # Load the serialized model
 model = joblib.load("superkart_model.joblib")
 
 
-@app.route("/v1")
+@app.route("/")
 def home():
     return "Sales Prediction API is Running!"
 
 
-@app.route("/v1/predict", methods=["POST"])
+@app.route("/predict", methods=["POST"])
 def predict():
 
     # Read JSON data

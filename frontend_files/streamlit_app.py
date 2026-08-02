@@ -95,7 +95,7 @@ if st.button("Predict Sales"):
         "Store_Type": store_type
     }
 
-    API_URL = "http://localhost:9090/v1/predict"
+    API_URL = "http://localhost:9090/superkart-backend/v1/predict"
 
     response = requests.post(API_URL, json=data)
 
